@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     description: "Organized execution with zero compromise on creativity.",
     type: "website",
   },
+  icons: {
+    icon: "/favicon-32.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const socials = [
-  { href: "https://youtube.com/@clickandcast", label: "YouTube" },
-  { href: "https://instagram.com/clickandcast", label: "Instagram" },
-  { href: "https://facebook.com/clickandcast", label: "Facebook" },
-  { href: "https://tiktok.com/@clickandcast", label: "TikTok" },
+  { href: "https://www.instagram.com/clickandcastinc/", label: "Instagram" },
+  { href: "https://www.facebook.com/clickandcastinc", label: "Facebook" },
+  { href: "https://www.tiktok.com/@clickandcastinc", label: "TikTok" },
+  { href: "https://www.youtube.com/@ClickAndCast", label: "YouTube" },
 ];
 
 const links = {
@@ -32,13 +33,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" style={{ color: "inherit" }}>
-              <span className="text-[#E8174D] font-black text-xl tracking-tight">
-                Click<span className="text-white">&</span>Cast
-              </span>{" "}
-              <span className="text-[#a0a0a0] text-sm font-normal">Inc</span>
+            <Link href="/" className="inline-block">
+              <Image
+                src="/logo-horizontal-white.png"
+                alt="Click & Cast Inc"
+                width={180}
+                height={41}
+                className="h-9 w-auto"
+              />
             </Link>
-            <p className="mt-3 text-sm leading-relaxed max-w-xs" style={{ color: "#a0a0a0" }}>
+            <p className="mt-4 text-sm leading-relaxed max-w-xs" style={{ color: "#a0a0a0" }}>
               Rebranded. Recharged. Ready to create. Where creative storytelling meets technical
               precision.
             </p>

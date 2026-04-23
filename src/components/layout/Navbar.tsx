@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
@@ -35,20 +36,15 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 group"
-          style={{ color: "inherit" }}
-        >
-          <span className="text-[#E8174D] font-black text-xl tracking-tight">
-            Click<span className="text-white">&</span>Cast
-          </span>
-          <span
-            className="text-xs font-semibold uppercase tracking-[1.4px] hidden sm:block"
-            style={{ color: "#a0a0a0" }}
-          >
-            Inc
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-horizontal-white.png"
+            alt="Click & Cast Inc"
+            width={160}
+            height={37}
+            priority
+            className="h-8 w-auto"
+          />
         </Link>
 
         {/* Desktop links */}
@@ -70,14 +66,11 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA — Dark Solid */}
+        {/* CTA */}
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-[4px] transition-all duration-200 hover:opacity-90"
-          style={{
-            backgroundColor: "#141414",
-            border: "1px solid #141414",
-          }}
+          className="hidden md:inline-flex items-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-[4px] transition-all duration-200 hover:opacity-80"
+          style={{ backgroundColor: "#141414", border: "1px solid rgba(65,65,65,0.8)" }}
         >
           Get a Quote
         </Link>
@@ -96,10 +89,7 @@ export default function Navbar() {
       {open && (
         <div
           className="md:hidden backdrop-blur-md border-b px-6 pb-6"
-          style={{
-            backgroundColor: "rgba(0,0,0,0.98)",
-            borderColor: "rgba(65,65,65,0.8)",
-          }}
+          style={{ backgroundColor: "rgba(0,0,0,0.98)", borderColor: "rgba(65,65,65,0.8)" }}
         >
           <ul className="flex flex-col gap-4 pt-4">
             {links.map(({ href, label }) => (
@@ -117,8 +107,8 @@ export default function Navbar() {
           </ul>
           <Link
             href="/contact"
-            className="mt-6 w-full flex items-center justify-center text-white text-sm font-semibold px-4 py-2.5 rounded-[4px] transition-all hover:opacity-90"
-            style={{ backgroundColor: "#141414", border: "1px solid #141414" }}
+            className="mt-6 w-full flex items-center justify-center text-white text-sm font-semibold px-4 py-2.5 rounded-[4px] transition-all hover:opacity-80"
+            style={{ backgroundColor: "#141414", border: "1px solid rgba(65,65,65,0.8)" }}
           >
             Get a Quote
           </Link>
