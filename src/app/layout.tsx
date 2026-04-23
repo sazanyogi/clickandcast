@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/providers/SmoothScroll";
+import SpotlightCursor from "@/components/ui/SpotlightCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,6 +35,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col bg-black text-white antialiased">
+        <SmoothScroll />
+        <SpotlightCursor />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

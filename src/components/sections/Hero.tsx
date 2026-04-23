@@ -1,33 +1,77 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import ScrambleText from "@/components/ui/ScrambleText";
+import MagneticButton from "@/components/ui/MagneticButton";
+
+function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+  const motionVal = useMotionValue(0);
+  const spring = useSpring(motionVal, { duration: 1.8, bounce: 0 });
+  const [display, setDisplay] = useState("0");
+
+  useEffect(() => {
+    if (inView) motionVal.set(target);
+  }, [inView, motionVal, target]);
+
+  useEffect(() => {
+    return spring.on("change", (v) => setDisplay(Math.round(v).toString()));
+  }, [spring]);
+
+  return <span ref={ref}>{display}{suffix}</span>;
+}
 
 const stats = [
-  { value: "4K", label: "Resolution Delivery" },
-  { value: "Multi-Cam", label: "Live Production" },
-  { value: "Zero", label: "Compromise" },
+  { display: "4K", label: "Resolution Delivery", isText: true },
+  { display: "Multi-Cam", label: "Live Production", isText: true },
+  { display: "Zero", label: "Compromise", isText: true },
 ];
 
 export default function Hero() {
+  const mouseX = useMotionValue(-1000);
+  const mouseY = useMotionValue(-1000);
+  const x = useSpring(mouseX, { stiffness: 60, damping: 18 });
+  const y = useSpring(mouseY, { stiffness: 60, damping: 18 });
+  const gridMask = useMotionTemplate`radial-gradient(350px circle at ${x}px ${y}px, black 0%, transparent 80%)`;
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, [mouseX, mouseY]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Subtle grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
+
+      {/* Grid — revealed only under spotlight via mask */}
+      <motion.div
+        className="absolute inset-0"
         style={{
           backgroundImage: `linear-gradient(#E8174D 1px, transparent 1px), linear-gradient(90deg, #E8174D 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
+          opacity: 0.5,
+          WebkitMaskImage: gridMask,
+          maskImage: gridMask,
         }}
       />
 
+      {/* Radial vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,transparent_40%,#000_100%)]" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-40 text-center">
-        {/* Overline badge */}
+
+        {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex items-center gap-2 border rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[1.4px] mb-10"
           style={{
             borderColor: "rgba(232,23,77,0.25)",
@@ -39,26 +83,30 @@ export default function Hero() {
           Now Open for Business
         </motion.div>
 
-        {/* Hero headline — 96px Inter Black */}
+        {/* Headline with scramble */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
           className="font-black leading-none tracking-tight text-white"
           style={{ fontSize: "clamp(3rem, 8vw, 6rem)", fontWeight: 900, lineHeight: 1.0 }}
         >
-          Rebranded.
-          <br />
-          <span style={{ color: "#E8174D" }}>Recharged.</span>
-          <br />
-          Ready to Create.
+          <ScrambleText text="Rebranded." delay={300} speed={25} className="block" />
+          <ScrambleText
+            text="Recharged."
+            delay={600}
+            speed={25}
+            className="block"
+            style={{ color: "#E8174D" }}
+          />
+          <ScrambleText text="Ready to Create." delay={900} speed={25} className="block" />
         </motion.h1>
 
-        {/* Subheading */}
+        {/* Subheading — slides up */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
+          transition={{ duration: 0.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
           style={{ color: "#a0a0a0" }}
         >
@@ -71,18 +119,14 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          transition={{ duration: 0.7, delay: 1.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          {/* Neon Primary CTA */}
-          <Link
+          <MagneticButton
+            as="a"
             href="/services"
-            className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-[4px] transition-all duration-200 text-base group"
-            style={{
-              backgroundColor: "#E8174D",
-              color: "#151515",
-              border: "1px solid #E8174D",
-            }}
+            className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-[4px] transition-all duration-200 text-base"
+            style={{ backgroundColor: "#E8174D", color: "#151515", border: "1px solid #E8174D" }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
               (e.currentTarget as HTMLElement).style.color = "#E8174D";
@@ -93,10 +137,10 @@ export default function Hero() {
             }}
           >
             Explore Services <ArrowRight size={16} />
-          </Link>
+          </MagneticButton>
 
-          {/* Ghost Button */}
-          <Link
+          <MagneticButton
+            as="a"
             href="/portfolio"
             className="inline-flex items-center gap-2 font-medium px-8 py-3 rounded-[4px] transition-all duration-200 text-base text-white"
             style={{ border: "1px solid #5c0a1e" }}
@@ -108,29 +152,28 @@ export default function Hero() {
             }}
           >
             <Play size={16} /> View Our Work
-          </Link>
+          </MagneticButton>
         </motion.div>
 
-        {/* Stats bar */}
+        {/* Stats row with count-up */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
           className="mt-24 flex flex-wrap items-center justify-center gap-12 md:gap-24"
         >
-          {stats.map(({ value, label }, i) => (
-            <div key={label} className="text-center">
-              {i > 0 && (
-                <div
-                  className="hidden md:block absolute -left-12 top-1/2 -translate-y-1/2 w-px h-8"
-                  style={{ backgroundColor: "rgba(65,65,65,0.8)" }}
-                />
-              )}
+          {stats.map(({ display, label }, i) => (
+            <motion.div
+              key={label}
+              className="text-center"
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
               <div
                 className="font-black leading-none"
                 style={{ fontSize: "clamp(2rem, 4vw, 4.5rem)", fontWeight: 900, color: "#ffffff" }}
               >
-                {value}
+                <ScrambleText text={display} delay={2200 + i * 200} speed={35} />
               </div>
               <div
                 className="text-xs font-semibold uppercase tracking-[1.4px] mt-2"
@@ -138,7 +181,7 @@ export default function Hero() {
               >
                 {label}
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>

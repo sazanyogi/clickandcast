@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Radio, Camera, Mic, Cpu } from "lucide-react";
+import TiltCard from "@/components/ui/TiltCard";
+import WordReveal from "@/components/ui/WordReveal";
 
 const services = [
   {
@@ -51,24 +53,14 @@ export default function ServicesPreview() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
         >
           <div>
-            <p
-              className="text-xs font-semibold uppercase tracking-[1.4px] mb-3"
-              style={{ color: "#E8174D" }}
-            >
+            <p className="text-xs font-semibold uppercase tracking-[1.4px] mb-3" style={{ color: "#E8174D" }}>
               Our Services
             </p>
-            <h2
-              className="font-black leading-none text-white"
-              style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}
-            >
-              Four Pillars of Excellence
+            <h2 className="font-black leading-none text-white" style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}>
+              <WordReveal text="Four Pillars of Excellence" />
             </h2>
           </div>
-          <Link
-            href="/services"
-            className="shrink-0 text-sm font-semibold transition-colors hover:text-[#E8174D]"
-            style={{ color: "#a0a0a0" }}
-          >
+          <Link href="/services" className="shrink-0 text-sm font-semibold transition-colors hover:text-[#E8174D]" style={{ color: "#a0a0a0" }}>
             View all services →
           </Link>
         </motion.div>
@@ -77,50 +69,41 @@ export default function ServicesPreview() {
           {services.map(({ icon: Icon, title, subtitle, description, tag }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-6 rounded-[8px] transition-all duration-300 group"
-              style={{
-                backgroundColor: "#000000",
-                border: "1px solid rgba(65,65,65,0.8)",
-                boxShadow: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "#E8174D";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(65,65,65,0.8)";
-              }}
+              viewport={{ once: true, margin: "-5%" }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Icon + tag row */}
-              <div className="flex items-center justify-between mb-5">
-                <div
-                  className="w-10 h-10 rounded-[4px] flex items-center justify-center transition-all duration-300"
-                  style={{
-                    backgroundColor: "#141414",
-                    border: "1px solid rgba(65,65,65,0.8)",
-                    color: "#E8174D",
-                  }}
-                >
-                  <Icon size={18} />
+              <TiltCard
+                className="group relative h-full overflow-hidden"
+                intensity={8}
+                style={{
+                  backgroundColor: "#000000",
+                  border: "1px solid rgba(65,65,65,0.8)",
+                  borderRadius: "8px",
+                  boxShadow: "rgba(0,0,0,0.1) 0px 1px 3px",
+                }}
+              >
+                <div className="p-6 h-full">
+                  <div className="flex items-center justify-between mb-5">
+                    <div
+                      className="w-10 h-10 rounded-[4px] flex items-center justify-center"
+                      style={{ backgroundColor: "#141414", border: "1px solid rgba(65,65,65,0.8)", color: "#E8174D" }}
+                    >
+                      <Icon size={18} />
+                    </div>
+                    <span
+                      className="text-xs font-semibold uppercase tracking-[1.4px] border rounded-full px-2.5 py-0.5"
+                      style={{ color: "#a0a0a0", borderColor: "rgba(65,65,65,0.8)" }}
+                    >
+                      {tag}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-base leading-snug mb-1 text-white">{title}</h3>
+                  <p className="text-xs font-semibold mb-3" style={{ color: "#E8174D" }}>{subtitle}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "#a0a0a0" }}>{description}</p>
                 </div>
-                <span
-                  className="text-xs font-semibold uppercase tracking-[1.4px] border rounded-full px-2.5 py-0.5"
-                  style={{ color: "#a0a0a0", borderColor: "rgba(65,65,65,0.8)" }}
-                >
-                  {tag}
-                </span>
-              </div>
-
-              <h3 className="font-bold text-base leading-snug mb-1 text-white">{title}</h3>
-              <p className="text-xs font-semibold mb-3" style={{ color: "#E8174D" }}>
-                {subtitle}
-              </p>
-              <p className="text-sm leading-relaxed" style={{ color: "#a0a0a0" }}>
-                {description}
-              </p>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

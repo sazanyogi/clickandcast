@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Users, Zap, Eye, MessageSquare, Package } from "lucide-react";
+import TiltCard from "@/components/ui/TiltCard";
+import WordReveal from "@/components/ui/WordReveal";
 
 const reasons = [
   {
@@ -27,8 +29,7 @@ const reasons = [
   {
     icon: Package,
     title: "Tailored Solutions",
-    description:
-      "Flexible packages for weddings, small businesses, or corporate giants. We scale with you.",
+    description: "Flexible packages for weddings, small businesses, or corporate giants. We scale with you.",
   },
 ];
 
@@ -42,17 +43,11 @@ export default function TrustSection() {
         transition={{ duration: 0.6 }}
         className="text-center mb-14"
       >
-        <p
-          className="text-xs font-semibold uppercase tracking-[1.4px] mb-3"
-          style={{ color: "#E8174D" }}
-        >
+        <p className="text-xs font-semibold uppercase tracking-[1.4px] mb-3" style={{ color: "#E8174D" }}>
           Why Choose Us
         </p>
-        <h2
-          className="font-black leading-none text-white max-w-2xl mx-auto"
-          style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}
-        >
-          The Click & Cast Difference
+        <h2 className="font-black leading-none text-white max-w-2xl mx-auto" style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}>
+          <WordReveal text="The Click & Cast Difference" />
         </h2>
       </motion.div>
 
@@ -60,39 +55,34 @@ export default function TrustSection() {
         {reasons.map(({ icon: Icon, title, description }, i) => (
           <motion.div
             key={title}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="flex gap-4 p-6 rounded-[8px] transition-colors duration-300"
-            style={{
-              backgroundColor: "#000000",
-              border: "1px solid rgba(65,65,65,0.8)",
-              boxShadow: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "#E8174D";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(65,65,65,0.8)";
-            }}
+            viewport={{ once: true, margin: "-5%" }}
+            transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div
-              className="shrink-0 w-10 h-10 rounded-[4px] flex items-center justify-center"
+            <TiltCard
+              className="group relative h-full overflow-hidden"
+              intensity={8}
               style={{
-                backgroundColor: "#141414",
+                backgroundColor: "#000000",
                 border: "1px solid rgba(65,65,65,0.8)",
-                color: "#E8174D",
+                borderRadius: "8px",
+                boxShadow: "rgba(0,0,0,0.1) 0px 1px 3px",
               }}
             >
-              <Icon size={18} />
-            </div>
-            <div>
-              <h3 className="font-bold mb-1 text-white">{title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "#a0a0a0" }}>
-                {description}
-              </p>
-            </div>
+              <div className="flex gap-4 p-6 h-full">
+                <div
+                  className="shrink-0 w-10 h-10 rounded-[4px] flex items-center justify-center"
+                  style={{ backgroundColor: "#141414", border: "1px solid rgba(65,65,65,0.8)", color: "#E8174D" }}
+                >
+                  <Icon size={18} />
+                </div>
+                <div>
+                  <h3 className="font-bold mb-1 text-white">{title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "#a0a0a0" }}>{description}</p>
+                </div>
+              </div>
+            </TiltCard>
           </motion.div>
         ))}
       </div>
