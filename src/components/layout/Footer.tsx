@@ -24,16 +24,21 @@ const links = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-card">
+    <footer
+      className="border-t"
+      style={{ borderColor: "rgba(65,65,65,0.8)", backgroundColor: "#000000" }}
+    >
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="text-primary font-bold text-xl tracking-tight">
-              Click<span className="text-foreground">&</span>Cast{" "}
-              <span className="text-muted-foreground text-sm font-normal">Inc</span>
+            <Link href="/" style={{ color: "inherit" }}>
+              <span className="text-[#faff69] font-black text-xl tracking-tight">
+                Click<span className="text-white">&</span>Cast
+              </span>{" "}
+              <span className="text-[#a0a0a0] text-sm font-normal">Inc</span>
             </Link>
-            <p className="mt-3 text-muted-foreground text-sm leading-relaxed max-w-xs">
+            <p className="mt-3 text-sm leading-relaxed max-w-xs" style={{ color: "#a0a0a0" }}>
               Rebranded. Recharged. Ready to create. Where creative storytelling meets technical
               precision.
             </p>
@@ -44,7 +49,8 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className="text-xs font-semibold uppercase tracking-[1.4px] transition-colors hover:text-[#faff69]"
+                  style={{ color: "#a0a0a0" }}
                 >
                   {label}
                 </a>
@@ -55,7 +61,10 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(links).map(([heading, items]) => (
             <div key={heading}>
-              <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+              <h4
+                className="text-xs font-semibold uppercase tracking-[1.4px] mb-4"
+                style={{ color: "#a0a0a0" }}
+              >
                 {heading}
               </h4>
               <ul className="space-y-2.5">
@@ -63,7 +72,8 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                      className="text-sm transition-colors hover:text-[#faff69]"
+                      style={{ color: "rgba(255,255,255,0.7)" }}
                     >
                       {label}
                     </Link>
@@ -74,7 +84,10 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+        <div
+          className="mt-12 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
+          style={{ borderColor: "rgba(65,65,65,0.8)", color: "#a0a0a0" }}
+        >
           <span>© {new Date().getFullYear()} Click & Cast Inc. All rights reserved.</span>
           <span>Built with precision. Delivered with purpose.</span>
         </div>

@@ -28,16 +28,25 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
+        scrolled
+          ? "bg-black/95 backdrop-blur-md border-b border-[rgba(65,65,65,0.8)]"
+          : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-primary font-bold text-xl tracking-tight">
-            Click<span className="text-foreground">&</span>Cast
+        <Link
+          href="/"
+          className="flex items-center gap-2 group"
+          style={{ color: "inherit" }}
+        >
+          <span className="text-[#faff69] font-black text-xl tracking-tight">
+            Click<span className="text-white">&</span>Cast
           </span>
-          <span className="text-xs text-muted-foreground font-medium uppercase tracking-widest hidden sm:block">
+          <span
+            className="text-xs font-semibold uppercase tracking-[1.4px] hidden sm:block"
+            style={{ color: "#a0a0a0" }}
+          >
             Inc
           </span>
         </Link>
@@ -48,9 +57,12 @@ export default function Navbar() {
             <li key={href}>
               <Link
                 href={href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === href ? "text-primary" : "text-muted-foreground"
+                className={`text-sm font-semibold uppercase tracking-[1.4px] transition-colors ${
+                  pathname === href
+                    ? "text-[#faff69]"
+                    : "text-[#a0a0a0] hover:text-[#faff69]"
                 }`}
+                style={{ color: pathname === href ? "#faff69" : undefined }}
               >
                 {label}
               </Link>
@@ -58,17 +70,21 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
+        {/* CTA — Forest Green */}
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
+          className="hidden md:inline-flex items-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-[4px] transition-all duration-200 hover:opacity-90"
+          style={{
+            backgroundColor: "#166534",
+            border: "1px solid #141414",
+          }}
         >
           Get a Quote
         </Link>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground p-1"
+          className="md:hidden text-white p-1"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -78,14 +94,20 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-background/98 backdrop-blur-md border-b border-border px-6 pb-6">
+        <div
+          className="md:hidden backdrop-blur-md border-b px-6 pb-6"
+          style={{
+            backgroundColor: "rgba(0,0,0,0.98)",
+            borderColor: "rgba(65,65,65,0.8)",
+          }}
+        >
           <ul className="flex flex-col gap-4 pt-4">
             {links.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
-                  className={`text-base font-medium transition-colors hover:text-primary block ${
-                    pathname === href ? "text-primary" : "text-foreground"
+                  className={`text-base font-semibold uppercase tracking-[1.4px] transition-colors block ${
+                    pathname === href ? "text-[#faff69]" : "text-white hover:text-[#faff69]"
                   }`}
                 >
                   {label}
@@ -95,7 +117,8 @@ export default function Navbar() {
           </ul>
           <Link
             href="/contact"
-            className="mt-6 w-full flex items-center justify-center bg-primary text-primary-foreground text-sm font-semibold px-4 py-2.5 rounded-md hover:bg-primary/90 transition-colors"
+            className="mt-6 w-full flex items-center justify-center text-white text-sm font-semibold px-4 py-2.5 rounded-[4px] transition-all hover:opacity-90"
+            style={{ backgroundColor: "#166534", border: "1px solid #141414" }}
           >
             Get a Quote
           </Link>

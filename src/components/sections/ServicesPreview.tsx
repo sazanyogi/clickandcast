@@ -41,7 +41,7 @@ const services = [
 
 export default function ServicesPreview() {
   return (
-    <section className="py-24 bg-card/30">
+    <section className="py-24" style={{ backgroundColor: "#000000" }}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,14 +51,23 @@ export default function ServicesPreview() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
         >
           <div>
-            <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-3">
+            <p
+              className="text-xs font-semibold uppercase tracking-[1.4px] mb-3"
+              style={{ color: "#faff69" }}
+            >
               Our Services
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold">Four Pillars of Excellence</h2>
+            <h2
+              className="font-black leading-none text-white"
+              style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}
+            >
+              Four Pillars of Excellence
+            </h2>
           </div>
           <Link
             href="/services"
-            className="shrink-0 text-sm font-semibold text-primary hover:text-primary/80 underline underline-offset-4"
+            className="shrink-0 text-sm font-semibold transition-colors hover:text-[#faff69]"
+            style={{ color: "#a0a0a0" }}
           >
             View all services →
           </Link>
@@ -72,19 +81,46 @@ export default function ServicesPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-card border border-border rounded-xl p-6 hover:border-primary/40 transition-all duration-300 group"
+              className="p-6 rounded-[8px] transition-all duration-300 group"
+              style={{
+                backgroundColor: "#000000",
+                border: "1px solid rgba(65,65,65,0.8)",
+                boxShadow: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = "#faff69";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(65,65,65,0.8)";
+              }}
             >
+              {/* Icon + tag row */}
               <div className="flex items-center justify-between mb-5">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <div
+                  className="w-10 h-10 rounded-[4px] flex items-center justify-center transition-all duration-300"
+                  style={{
+                    backgroundColor: "#141414",
+                    border: "1px solid rgba(65,65,65,0.8)",
+                    color: "#faff69",
+                  }}
+                >
                   <Icon size={18} />
                 </div>
-                <span className="text-xs font-medium text-muted-foreground border border-border rounded-full px-2.5 py-0.5">
+                <span
+                  className="text-xs font-semibold uppercase tracking-[1.4px] border rounded-full px-2.5 py-0.5"
+                  style={{ color: "#a0a0a0", borderColor: "rgba(65,65,65,0.8)" }}
+                >
                   {tag}
                 </span>
               </div>
-              <h3 className="font-bold text-base leading-snug mb-1">{title}</h3>
-              <p className="text-primary text-xs font-medium mb-3">{subtitle}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+
+              <h3 className="font-bold text-base leading-snug mb-1 text-white">{title}</h3>
+              <p className="text-xs font-semibold mb-3" style={{ color: "#faff69" }}>
+                {subtitle}
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: "#a0a0a0" }}>
+                {description}
+              </p>
             </motion.div>
           ))}
         </div>

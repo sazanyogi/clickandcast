@@ -4,11 +4,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight } from "lucide-react";
 
-export default function CTA() {
-  const whatsappManager = "https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20Click%20%26%20Cast%20services.";
+const whatsappManager =
+  process.env.NEXT_PUBLIC_WHATSAPP_MANAGER
+    ? `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_MANAGER}?text=Hi%2C%20I%27m%20interested%20in%20Click%20%26%20Cast%20services.`
+    : "https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20Click%20%26%20Cast%20services.";
 
+export default function CTA() {
   return (
-    <section className="py-24 bg-card/30">
+    <section className="py-24" style={{ backgroundColor: "#000000" }}>
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,29 +19,63 @@ export default function CTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 text-xs font-medium text-primary mb-8">
+          {/* Status badge */}
+          <div
+            className="inline-flex items-center gap-2 border rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[1.4px] mb-10"
+            style={{
+              borderColor: "rgba(250,255,105,0.25)",
+              backgroundColor: "rgba(250,255,105,0.06)",
+              color: "#faff69",
+            }}
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             Available for New Projects
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+
+          {/* Headline */}
+          <h2
+            className="font-black leading-none text-white mb-6"
+            style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}
+          >
             Ready to Bring Your Vision to Life?
           </h2>
-          <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
+
+          {/* Body */}
+          <p className="text-lg mb-10 max-w-xl mx-auto leading-relaxed" style={{ color: "#a0a0a0" }}>
             Let&apos;s talk about your next event, production, or digital project. Quick-connect via
             WhatsApp or send us a message.
           </p>
+
+          {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Forest Green primary */}
             <a
               href={whatsappManager}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#22c55e] transition-colors text-base"
+              className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-[4px] transition-all duration-200 text-base"
+              style={{ backgroundColor: "#166534", border: "1px solid #141414" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "#3a3a3a";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "#166534";
+              }}
             >
               <MessageCircle size={18} /> WhatsApp Us
             </a>
+
+            {/* Ghost button */}
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 border border-border text-foreground font-medium px-6 py-3 rounded-md hover:border-primary hover:text-primary transition-colors text-base"
+              className="inline-flex items-center gap-2 font-medium px-8 py-3 rounded-[4px] transition-all duration-200 text-base text-white"
+              style={{ border: "1px solid #4f5100" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "transparent";
+              }}
             >
               Send a Message <ArrowRight size={16} />
             </Link>

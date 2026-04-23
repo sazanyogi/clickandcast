@@ -42,10 +42,16 @@ export default function TrustSection() {
         transition={{ duration: 0.6 }}
         className="text-center mb-14"
       >
-        <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-3">
+        <p
+          className="text-xs font-semibold uppercase tracking-[1.4px] mb-3"
+          style={{ color: "#faff69" }}
+        >
           Why Choose Us
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold max-w-2xl mx-auto">
+        <h2
+          className="font-black leading-none text-white max-w-2xl mx-auto"
+          style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}
+        >
           The Click & Cast Difference
         </h2>
       </motion.div>
@@ -58,14 +64,34 @@ export default function TrustSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="flex gap-4 p-6 bg-card border border-border rounded-xl hover:border-primary/30 transition-colors"
+            className="flex gap-4 p-6 rounded-[8px] transition-colors duration-300"
+            style={{
+              backgroundColor: "#000000",
+              border: "1px solid rgba(65,65,65,0.8)",
+              boxShadow: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = "#faff69";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(65,65,65,0.8)";
+            }}
           >
-            <div className="shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+            <div
+              className="shrink-0 w-10 h-10 rounded-[4px] flex items-center justify-center"
+              style={{
+                backgroundColor: "#141414",
+                border: "1px solid rgba(65,65,65,0.8)",
+                color: "#faff69",
+              }}
+            >
               <Icon size={18} />
             </div>
             <div>
-              <h3 className="font-semibold mb-1">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+              <h3 className="font-bold mb-1 text-white">{title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#a0a0a0" }}>
+                {description}
+              </p>
             </div>
           </motion.div>
         ))}
