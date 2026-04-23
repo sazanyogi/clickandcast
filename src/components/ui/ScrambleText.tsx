@@ -8,17 +8,23 @@ interface Props {
   text: string;
   className?: string;
   style?: React.CSSProperties;
-  delay?: number; // ms before starting
-  speed?: number; // ms per frame
+  delay?: number;
+  speed?: number;
 }
 
 export default function ScrambleText({ text, className, style, delay = 0, speed = 28 }: Props) {
-  const [displayed, setDisplayed] = useState(text);
-  const started = useRef(false);
+  const [displayed, setDisplayed] = useState(() =>
+    text.split("").map((c) => (c === " " || c === "\n" ? c : CHARS[Math.floor(Math.random() * CHARS.length)])).join("")
+  );
+  const done = useRef(false);
 
   useEffect(() => {
+    if (done.current) {
+      setDisplayed(text);
+      return;
+    }
+
     const timeout = setTimeout(() => {
-      started.current = true;
       let frame = 0;
       const totalFrames = text.length * 4;
 
@@ -37,6 +43,7 @@ export default function ScrambleText({ text, className, style, delay = 0, speed 
         if (frame > totalFrames) {
           clearInterval(interval);
           setDisplayed(text);
+          done.current = true;
         }
       }, speed);
 
