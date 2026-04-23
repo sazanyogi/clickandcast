@@ -70,12 +70,12 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA — Forest Green */}
+        {/* CTA — Dark Solid */}
         <Link
           href="/contact"
           className="hidden md:inline-flex items-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-[4px] transition-all duration-200 hover:opacity-90"
           style={{
-            backgroundColor: "#166534",
+            backgroundColor: "#141414",
             border: "1px solid #141414",
           }}
         >
@@ -118,7 +118,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             className="mt-6 w-full flex items-center justify-center text-white text-sm font-semibold px-4 py-2.5 rounded-[4px] transition-all hover:opacity-90"
-            style={{ backgroundColor: "#166534", border: "1px solid #141414" }}
+            style={{ backgroundColor: "#141414", border: "1px solid #141414" }}
           >
             Get a Quote
           </Link>

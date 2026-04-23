@@ -48,18 +48,18 @@ export default function CTA() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* Forest Green primary */}
+            {/* Dark Solid primary */}
             <a
               href={whatsappManager}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-[4px] transition-all duration-200 text-base"
-              style={{ backgroundColor: "#166534", border: "1px solid #141414" }}
+              style={{ backgroundColor: "#141414", border: "1px solid #141414" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = "#3a3a3a";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.backgroundColor = "#166534";
+                (e.currentTarget as HTMLElement).style.backgroundColor = "#141414";
               }}
             >
               <MessageCircle size={18} /> WhatsApp Us
