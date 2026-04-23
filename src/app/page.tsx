@@ -9,9 +9,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <AboutSection />
       <DualEntry />
       <ServicesPreview />
-      <AboutSection />
       <TrustSection />
       <CTA />
     </>

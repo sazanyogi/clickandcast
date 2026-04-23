@@ -6,7 +6,7 @@ import WordReveal from "@/components/ui/WordReveal";
 
 export default function AboutSection() {
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto">
+    <section className="py-16 sm:py-24 px-5 sm:px-6 max-w-7xl mx-auto">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

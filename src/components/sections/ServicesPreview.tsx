@@ -43,8 +43,8 @@ const services = [
 
 export default function ServicesPreview() {
   return (
-    <section className="py-24" style={{ backgroundColor: "#000000" }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 sm:py-24" style={{ backgroundColor: "#000000" }}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

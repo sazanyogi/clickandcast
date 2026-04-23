@@ -100,10 +100,10 @@ export default function Footer() {
       className="border-t"
       style={{ borderColor: "rgba(65,65,65,0.8)", backgroundColor: "#000000" }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="col-span-1 md:col-span-2">
             <Link href="/" className="inline-block">
               <Image
                 src="/logo-horizontal-white.png"
@@ -124,7 +124,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link columns */}
+          {/* Link columns — 2 cols on mobile, 1 each on md */}
+          <div className="grid grid-cols-2 md:contents gap-10">
           {Object.entries(links).map(([heading, items]) => (
             <div key={heading}>
               <h4
@@ -140,6 +141,7 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+          </div>
         </div>
 
         <div

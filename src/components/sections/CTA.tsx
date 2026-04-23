@@ -12,8 +12,8 @@ const whatsappManager =
 
 export default function CTA() {
   return (
-    <section className="py-24" style={{ backgroundColor: "#000000" }}>
-      <div className="max-w-4xl mx-auto px-6 text-center">
+    <section className="py-16 sm:py-24" style={{ backgroundColor: "#000000" }}>
+      <div className="max-w-4xl mx-auto px-5 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.45 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4"
           >
             <MagneticButton
               as="a"

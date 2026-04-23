@@ -65,7 +65,7 @@ export default function Hero() {
       {/* Radial vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,transparent_40%,#000_100%)]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-40 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 py-32 sm:py-40 text-center">
 
         {/* Badge */}
         <motion.div
@@ -120,7 +120,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-2 sm:px-0"
         >
           <MagneticButton
             as="a"
@@ -160,7 +160,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-24 flex flex-wrap items-center justify-center gap-12 md:gap-24"
+          className="mt-16 sm:mt-24 flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-24"
         >
           {stats.map(({ display, label }, i) => (
             <motion.div
