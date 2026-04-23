@@ -53,7 +53,7 @@ export default function ServicesPreview() {
           <div>
             <p
               className="text-xs font-semibold uppercase tracking-[1.4px] mb-3"
-              style={{ color: "#faff69" }}
+              style={{ color: "#E8174D" }}
             >
               Our Services
             </p>
@@ -66,7 +66,7 @@ export default function ServicesPreview() {
           </div>
           <Link
             href="/services"
-            className="shrink-0 text-sm font-semibold transition-colors hover:text-[#faff69]"
+            className="shrink-0 text-sm font-semibold transition-colors hover:text-[#E8174D]"
             style={{ color: "#a0a0a0" }}
           >
             View all services →
@@ -88,7 +88,7 @@ export default function ServicesPreview() {
                 boxShadow: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "#faff69";
+                (e.currentTarget as HTMLElement).style.borderColor = "#E8174D";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.borderColor = "rgba(65,65,65,0.8)";
@@ -101,7 +101,7 @@ export default function ServicesPreview() {
                   style={{
                     backgroundColor: "#141414",
                     border: "1px solid rgba(65,65,65,0.8)",
-                    color: "#faff69",
+                    color: "#E8174D",
                   }}
                 >
                   <Icon size={18} />
@@ -115,7 +115,7 @@ export default function ServicesPreview() {
               </div>
 
               <h3 className="font-bold text-base leading-snug mb-1 text-white">{title}</h3>
-              <p className="text-xs font-semibold mb-3" style={{ color: "#faff69" }}>
+              <p className="text-xs font-semibold mb-3" style={{ color: "#E8174D" }}>
                 {subtitle}
               </p>
               <p className="text-sm leading-relaxed" style={{ color: "#a0a0a0" }}>

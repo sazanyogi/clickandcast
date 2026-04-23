@@ -40,7 +40,7 @@ export default function Navbar() {
           className="flex items-center gap-2 group"
           style={{ color: "inherit" }}
         >
-          <span className="text-[#faff69] font-black text-xl tracking-tight">
+          <span className="text-[#E8174D] font-black text-xl tracking-tight">
             Click<span className="text-white">&</span>Cast
           </span>
           <span
@@ -59,10 +59,10 @@ export default function Navbar() {
                 href={href}
                 className={`text-sm font-semibold uppercase tracking-[1.4px] transition-colors ${
                   pathname === href
-                    ? "text-[#faff69]"
-                    : "text-[#a0a0a0] hover:text-[#faff69]"
+                    ? "text-[#E8174D]"
+                    : "text-[#a0a0a0] hover:text-[#E8174D]"
                 }`}
-                style={{ color: pathname === href ? "#faff69" : undefined }}
+                style={{ color: pathname === href ? "#E8174D" : undefined }}
               >
                 {label}
               </Link>
@@ -107,7 +107,7 @@ export default function Navbar() {
                 <Link
                   href={href}
                   className={`text-base font-semibold uppercase tracking-[1.4px] transition-colors block ${
-                    pathname === href ? "text-[#faff69]" : "text-white hover:text-[#faff69]"
+                    pathname === href ? "text-[#E8174D]" : "text-white hover:text-[#E8174D]"
                   }`}
                 >
                   {label}

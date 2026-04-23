@@ -39,7 +39,7 @@ export default function DualEntry() {
       >
         <p
           className="text-xs font-semibold uppercase tracking-[1.4px] mb-3"
-          style={{ color: "#faff69" }}
+          style={{ color: "#E8174D" }}
         >
           Two Disciplines. One Agency.
         </p>
@@ -65,14 +65,14 @@ export default function DualEntry() {
               className="group block h-full p-8 rounded-[8px] transition-all duration-300"
               style={{
                 backgroundColor: "#000000",
-                border: featured ? "1px solid #faff69" : "1px solid rgba(65,65,65,0.8)",
+                border: featured ? "1px solid #E8174D" : "1px solid rgba(65,65,65,0.8)",
                 boxShadow: featured
                   ? "rgba(0,0,0,0.06) 0px 4px 4px, rgba(0,0,0,0.14) 0px 4px 25px inset"
                   : "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px",
               }}
               onMouseEnter={(e) => {
                 if (!featured) {
-                  (e.currentTarget as HTMLElement).style.borderColor = "#faff69";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#E8174D";
                 }
               }}
               onMouseLeave={(e) => {
@@ -87,7 +87,7 @@ export default function DualEntry() {
                 style={{
                   backgroundColor: "#141414",
                   border: "1px solid rgba(65,65,65,0.8)",
-                  color: "#faff69",
+                  color: "#E8174D",
                 }}
               >
                 <Icon size={22} />
@@ -117,7 +117,7 @@ export default function DualEntry() {
               {/* CTA */}
               <span
                 className="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all duration-200"
-                style={{ color: "#faff69" }}
+                style={{ color: "#E8174D" }}
               >
                 {cta} <ArrowRight size={14} />
               </span>

@@ -17,7 +17,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: `linear-gradient(#faff69 1px, transparent 1px), linear-gradient(90deg, #faff69 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(#E8174D 1px, transparent 1px), linear-gradient(90deg, #E8174D 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
         }}
       />
@@ -30,12 +30,12 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 border rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[1.4px] mb-10"
           style={{
-            borderColor: "rgba(250,255,105,0.25)",
-            backgroundColor: "rgba(250,255,105,0.06)",
-            color: "#faff69",
+            borderColor: "rgba(232,23,77,0.25)",
+            backgroundColor: "rgba(232,23,77,0.06)",
+            color: "#E8174D",
           }}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#faff69] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#E8174D] animate-pulse" />
           Now Open for Business
         </motion.div>
 
@@ -49,7 +49,7 @@ export default function Hero() {
         >
           Rebranded.
           <br />
-          <span style={{ color: "#faff69" }}>Recharged.</span>
+          <span style={{ color: "#E8174D" }}>Recharged.</span>
           <br />
           Ready to Create.
         </motion.h1>
@@ -79,16 +79,16 @@ export default function Hero() {
             href="/services"
             className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-[4px] transition-all duration-200 text-base group"
             style={{
-              backgroundColor: "#faff69",
+              backgroundColor: "#E8174D",
               color: "#151515",
-              border: "1px solid #faff69",
+              border: "1px solid #E8174D",
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
-              (e.currentTarget as HTMLElement).style.color = "#faff69";
+              (e.currentTarget as HTMLElement).style.color = "#E8174D";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.backgroundColor = "#faff69";
+              (e.currentTarget as HTMLElement).style.backgroundColor = "#E8174D";
               (e.currentTarget as HTMLElement).style.color = "#151515";
             }}
           >
@@ -99,7 +99,7 @@ export default function Hero() {
           <Link
             href="/portfolio"
             className="inline-flex items-center gap-2 font-medium px-8 py-3 rounded-[4px] transition-all duration-200 text-base text-white"
-            style={{ border: "1px solid #4f5100" }}
+            style={{ border: "1px solid #5c0a1e" }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
             }}

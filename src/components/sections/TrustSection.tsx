@@ -44,7 +44,7 @@ export default function TrustSection() {
       >
         <p
           className="text-xs font-semibold uppercase tracking-[1.4px] mb-3"
-          style={{ color: "#faff69" }}
+          style={{ color: "#E8174D" }}
         >
           Why Choose Us
         </p>
@@ -71,7 +71,7 @@ export default function TrustSection() {
               boxShadow: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "#faff69";
+              (e.currentTarget as HTMLElement).style.borderColor = "#E8174D";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.borderColor = "rgba(65,65,65,0.8)";
@@ -82,7 +82,7 @@ export default function TrustSection() {
               style={{
                 backgroundColor: "#141414",
                 border: "1px solid rgba(65,65,65,0.8)",
-                color: "#faff69",
+                color: "#E8174D",
               }}
             >
               <Icon size={18} />

@@ -33,7 +33,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" style={{ color: "inherit" }}>
-              <span className="text-[#faff69] font-black text-xl tracking-tight">
+              <span className="text-[#E8174D] font-black text-xl tracking-tight">
                 Click<span className="text-white">&</span>Cast
               </span>{" "}
               <span className="text-[#a0a0a0] text-sm font-normal">Inc</span>
@@ -49,7 +49,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-semibold uppercase tracking-[1.4px] transition-colors hover:text-[#faff69]"
+                  className="text-xs font-semibold uppercase tracking-[1.4px] transition-colors hover:text-[#E8174D]"
                   style={{ color: "#a0a0a0" }}
                 >
                   {label}
@@ -72,7 +72,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="text-sm transition-colors hover:text-[#faff69]"
+                      className="text-sm transition-colors hover:text-[#E8174D]"
                       style={{ color: "rgba(255,255,255,0.7)" }}
                     >
                       {label}

@@ -23,9 +23,9 @@ export default function CTA() {
           <div
             className="inline-flex items-center gap-2 border rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[1.4px] mb-10"
             style={{
-              borderColor: "rgba(250,255,105,0.25)",
-              backgroundColor: "rgba(250,255,105,0.06)",
-              color: "#faff69",
+              borderColor: "rgba(232,23,77,0.25)",
+              backgroundColor: "rgba(232,23,77,0.06)",
+              color: "#E8174D",
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -69,7 +69,7 @@ export default function CTA() {
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 font-medium px-8 py-3 rounded-[4px] transition-all duration-200 text-base text-white"
-              style={{ border: "1px solid #4f5100" }}
+              style={{ border: "1px solid #5c0a1e" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
               }}

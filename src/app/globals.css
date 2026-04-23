@@ -40,7 +40,7 @@
 }
 
 :root {
-  /* ── Click & Cast: Neon Volt on Pure Black ── */
+  /* ── Click & Cast: Brand Crimson on Pure Black ── */
   --background: #000000;
   --foreground: #ffffff;
   --card: #000000;
@@ -48,8 +48,8 @@
   --popover: #141414;
   --popover-foreground: #ffffff;
 
-  /* Neon Volt (#faff69) as primary */
-  --primary: #faff69;
+  /* Brand Crimson (#E8174D) as primary */
+  --primary: #E8174D;
   --primary-foreground: #151515;
 
   /* Forest Green (#166534) as secondary */
@@ -59,24 +59,24 @@
   --muted: #141414;
   --muted-foreground: #a0a0a0;
 
-  --accent: #faff69;
+  --accent: #E8174D;
   --accent-foreground: #151515;
 
   --destructive: #ef4444;
   --border: rgba(65, 65, 65, 0.8);
   --input: #141414;
-  --ring: #faff69;
+  --ring: #E8174D;
 
   --radius: 0.25rem; /* 4px — sharp geometry */
 
   --sidebar: #000000;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #faff69;
+  --sidebar-primary: #E8174D;
   --sidebar-primary-foreground: #151515;
   --sidebar-accent: #141414;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(65, 65, 65, 0.8);
-  --sidebar-ring: #faff69;
+  --sidebar-ring: #E8174D;
 }
 
 @layer base {
@@ -95,10 +95,10 @@
   }
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: #000000; }
-  ::-webkit-scrollbar-thumb { background: #faff69; border-radius: 2px; }
-  ::selection { background: #faff69; color: #151515; }
+  ::-webkit-scrollbar-thumb { background: #E8174D; border-radius: 2px; }
+  ::selection { background: #E8174D; color: #151515; }
 
-  /* All links hover to Neon Volt */
+  /* All links hover to Brand Crimson */
   a { transition: color 0.15s ease; }
-  a:hover { color: #faff69; }
+  a:hover { color: #E8174D; }
 }
