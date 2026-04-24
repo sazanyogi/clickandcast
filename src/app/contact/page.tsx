@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Send, CheckCircle2 } from "lucide-react";
+import { MessageCircle, Send, CheckCircle2, ArrowRight } from "lucide-react";
+import WordReveal from "@/components/ui/WordReveal";
 
 const services = [
   "Live Streaming & Event Production",
@@ -12,10 +13,8 @@ const services = [
   "Other / Not Sure Yet",
 ];
 
-const whatsappManager =
-  "https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20Click%20%26%20Cast%20services.";
-const whatsappProduction =
-  "https://wa.me/1YYYYYYYYYY?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20production%20project.";
+const whatsappManager = "https://wa.me/14379874806?text=Hi%2C%20I%27m%20interested%20in%20Click%20%26%20Cast%20services.";
+const whatsappProduction = "https://wa.me/14374300348?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20production%20project.";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", service: "", message: "" });
@@ -39,52 +38,83 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="pt-24 pb-24">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-3">
-            Get In Touch
-          </p>
-          <h1 className="text-5xl md:text-6xl font-bold mb-5">Let&apos;s Talk</h1>
-          <p className="text-muted-foreground text-lg max-w-xl">
-            Ready to bring your vision to life? Reach out via the form below or connect instantly on
-            WhatsApp.
-          </p>
-        </motion.div>
+    <div className="min-h-screen bg-black text-white">
 
-        <div className="grid md:grid-cols-5 gap-10">
-          {/* Form — 3 cols */}
+      {/* Hero */}
+      <div className="border-b" style={{ borderColor: "rgba(65,65,65,0.8)" }}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-32 pb-16">
           <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[1.4px] mb-6"
+            style={{ borderColor: "rgba(232,23,77,0.25)", backgroundColor: "rgba(232,23,77,0.06)", color: "#E8174D" }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E8174D] animate-pulse" />
+            Get In Touch
+          </motion.div>
+
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-black leading-none tracking-tight mb-5"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 900 }}
+          >
+            <WordReveal text="Let's Talk." />
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base sm:text-lg max-w-xl leading-relaxed"
+            style={{ color: "#a0a0a0" }}
+          >
+            Ready to bring your vision to life? Fill out the form or connect instantly on WhatsApp — we respond within 24 hours.
+          </motion.p>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 py-16 sm:py-24">
+        <div className="grid md:grid-cols-5 gap-8 lg:gap-12">
+
+          {/* Form — 3 cols */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="md:col-span-3"
           >
             {status === "success" ? (
-              <div className="flex flex-col items-center justify-center h-64 text-center gap-4">
-                <CheckCircle2 size={48} className="text-primary" />
-                <h3 className="text-xl font-bold">Message Sent!</h3>
-                <p className="text-muted-foreground">
+              <div
+                className="flex flex-col items-center justify-center h-72 text-center gap-4 border rounded-[8px]"
+                style={{ borderColor: "rgba(65,65,65,0.8)", backgroundColor: "rgba(255,255,255,0.02)" }}
+              >
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: "rgba(232,23,77,0.1)", border: "1px solid rgba(232,23,77,0.3)" }}
+                >
+                  <CheckCircle2 size={28} style={{ color: "#E8174D" }} />
+                </div>
+                <h3 className="text-xl font-black text-white">Message Sent!</h3>
+                <p className="text-sm" style={{ color: "#a0a0a0" }}>
                   We&apos;ll get back to you within 24 hours.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="text-sm text-primary underline underline-offset-4"
+                  className="text-xs font-semibold uppercase tracking-[1.4px] mt-2 transition-colors"
+                  style={{ color: "#E8174D" }}
                 >
-                  Send another message
+                  Send another message →
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
+                    <label className="block text-xs font-semibold uppercase tracking-[1.4px] mb-2" style={{ color: "#a0a0a0" }}>
                       Full Name
                     </label>
                     <input
@@ -93,11 +123,14 @@ export default function ContactPage() {
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="Jane Smith"
-                      className="w-full bg-card border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors placeholder:text-muted-foreground/50"
+                      className="w-full px-4 py-3 rounded-[4px] text-sm text-white placeholder:text-[#404040] focus:outline-none transition-colors duration-200"
+                      style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(65,65,65,0.8)" }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(232,23,77,0.5)")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(65,65,65,0.8)")}
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
+                    <label className="block text-xs font-semibold uppercase tracking-[1.4px] mb-2" style={{ color: "#a0a0a0" }}>
                       Email Address
                     </label>
                     <input
@@ -106,53 +139,75 @@ export default function ContactPage() {
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder="jane@company.com"
-                      className="w-full bg-card border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors placeholder:text-muted-foreground/50"
+                      className="w-full px-4 py-3 rounded-[4px] text-sm text-white placeholder:text-[#404040] focus:outline-none transition-colors duration-200"
+                      style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(65,65,65,0.8)" }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(232,23,77,0.5)")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(65,65,65,0.8)")}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
+                  <label className="block text-xs font-semibold uppercase tracking-[1.4px] mb-2" style={{ color: "#a0a0a0" }}>
                     Service Interested In
                   </label>
                   <select
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    className="w-full bg-card border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors text-foreground"
+                    className="w-full px-4 py-3 rounded-[4px] text-sm focus:outline-none transition-colors duration-200 appearance-none"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(65,65,65,0.8)",
+                      color: form.service ? "#ffffff" : "#404040",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(232,23,77,0.5)")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(65,65,65,0.8)")}
                   >
-                    <option value="">Select a service...</option>
+                    <option value="" style={{ backgroundColor: "#111" }}>Select a service...</option>
                     {services.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
+                      <option key={s} value={s} style={{ backgroundColor: "#111" }}>{s}</option>
                     ))}
                   </select>
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
+                  <label className="block text-xs font-semibold uppercase tracking-[1.4px] mb-2" style={{ color: "#a0a0a0" }}>
                     Tell Us About Your Project
                   </label>
                   <textarea
                     required
-                    rows={5}
+                    rows={6}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Describe your event, project, or what you have in mind..."
-                    className="w-full bg-card border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors placeholder:text-muted-foreground/50 resize-none"
+                    className="w-full px-4 py-3 rounded-[4px] text-sm text-white placeholder:text-[#404040] focus:outline-none transition-colors duration-200 resize-none"
+                    style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(65,65,65,0.8)" }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(232,23,77,0.5)")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(65,65,65,0.8)")}
                   />
                 </div>
 
                 {status === "error" && (
-                  <p className="text-red-400 text-sm">Something went wrong. Please try again.</p>
+                  <p className="text-sm" style={{ color: "#E8174D" }}>
+                    Something went wrong. Try WhatsApp instead or email us directly.
+                  </p>
                 )}
 
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md hover:bg-primary/90 transition-colors disabled:opacity-60"
+                  className="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-[4px] text-sm uppercase tracking-[1.4px] transition-all duration-200 disabled:opacity-50"
+                  style={{ backgroundColor: "#E8174D", color: "#000000" }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
+                    (e.currentTarget as HTMLElement).style.color = "#E8174D";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.backgroundColor = "#E8174D";
+                    (e.currentTarget as HTMLElement).style.color = "#000000";
+                  }}
                 >
-                  {status === "loading" ? "Sending..." : <>Send Message <Send size={14} /></>}
+                  {status === "loading" ? "Sending..." : <><Send size={14} /> Send Message</>}
                 </button>
               </form>
             )}
@@ -160,15 +215,18 @@ export default function ContactPage() {
 
           {/* Sidebar — 2 cols */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-2 space-y-5"
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="md:col-span-2 space-y-4"
           >
-            {/* WhatsApp cards */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h3 className="font-bold mb-1">Quick Connect</h3>
-              <p className="text-muted-foreground text-sm mb-5">
+            {/* WhatsApp */}
+            <div
+              className="border rounded-[8px] p-6"
+              style={{ borderColor: "rgba(65,65,65,0.8)", backgroundColor: "rgba(255,255,255,0.02)" }}
+            >
+              <h3 className="font-black text-white mb-1">Quick Connect</h3>
+              <p className="text-sm mb-5" style={{ color: "#a0a0a0" }}>
                 Prefer a faster response? Reach us directly on WhatsApp.
               </p>
               <div className="space-y-3">
@@ -176,43 +234,55 @@ export default function ContactPage() {
                   href={whatsappManager}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 bg-[#25D366]/10 border border-[#25D366]/20 rounded-lg px-4 py-3 text-sm font-medium text-[#25D366] hover:bg-[#25D366]/20 transition-colors"
+                  className="group flex items-center gap-3 px-4 py-3 rounded-[4px] border text-sm font-semibold transition-all duration-200"
+                  style={{ borderColor: "rgba(37,211,102,0.25)", backgroundColor: "rgba(37,211,102,0.06)", color: "#25D366" }}
+                  onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(37,211,102,0.12)"}
+                  onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(37,211,102,0.06)"}
                 >
                   <MessageCircle size={16} />
-                  Manager — General Inquiries
+                  <div className="flex-1">
+                    <div>Amit Dhakal</div>
+                    <div className="text-xs font-normal opacity-70">Manager — General Inquiries</div>
+                  </div>
+                  <ArrowRight size={12} className="opacity-40 group-hover:opacity-100 transition-opacity" />
                 </a>
                 <a
                   href={whatsappProduction}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 bg-[#25D366]/10 border border-[#25D366]/20 rounded-lg px-4 py-3 text-sm font-medium text-[#25D366] hover:bg-[#25D366]/20 transition-colors"
+                  className="group flex items-center gap-3 px-4 py-3 rounded-[4px] border text-sm font-semibold transition-all duration-200"
+                  style={{ borderColor: "rgba(37,211,102,0.25)", backgroundColor: "rgba(37,211,102,0.06)", color: "#25D366" }}
+                  onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(37,211,102,0.12)"}
+                  onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(37,211,102,0.06)"}
                 >
                   <MessageCircle size={16} />
-                  Production Lead — Project Briefs
+                  <div className="flex-1">
+                    <div>Sazan Yogi</div>
+                    <div className="text-xs font-normal opacity-70">Production Lead — Project Briefs</div>
+                  </div>
+                  <ArrowRight size={12} className="opacity-40 group-hover:opacity-100 transition-opacity" />
                 </a>
               </div>
             </div>
 
             {/* Info */}
-            <div className="bg-card border border-border rounded-xl p-6 space-y-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">
-                  Response Time
-                </p>
-                <p className="text-sm">Within 24 hours on business days</p>
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">
-                  Based In
-                </p>
-                <p className="text-sm">Available for local & remote projects</p>
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">
-                  Project Types
-                </p>
-                <p className="text-sm">One-time events, retainer packages, long-term partnerships</p>
-              </div>
+            <div
+              className="border rounded-[8px] p-6 space-y-5"
+              style={{ borderColor: "rgba(65,65,65,0.8)", backgroundColor: "rgba(255,255,255,0.02)" }}
+            >
+              {[
+                { label: "Response Time", value: "Within 24 hours on business days" },
+                { label: "Based In", value: "Brampton, Ontario — local & remote projects" },
+                { label: "Project Types", value: "One-time events, retainers, long-term partnerships" },
+                { label: "Email", value: "clickandcast25@gmail.com" },
+              ].map(({ label, value }) => (
+                <div key={label}>
+                  <p className="text-xs font-semibold uppercase tracking-[1.4px] mb-1" style={{ color: "#a0a0a0" }}>
+                    {label}
+                  </p>
+                  <p className="text-sm text-white">{value}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
