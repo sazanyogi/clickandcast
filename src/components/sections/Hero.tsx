@@ -74,12 +74,12 @@ export default function Hero() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex items-center gap-2 border rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[1.4px] mb-10"
           style={{
-            borderColor: "rgba(232,23,77,0.25)",
-            backgroundColor: "rgba(232,23,77,0.06)",
-            color: "#E8174D",
+            borderColor: "rgba(74,222,128,0.3)",
+            backgroundColor: "rgba(74,222,128,0.08)",
+            color: "#4ade80",
           }}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E8174D] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
           Now Open for Business
         </motion.div>
 

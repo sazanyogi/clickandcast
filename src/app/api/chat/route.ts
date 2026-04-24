@@ -21,16 +21,17 @@ Click & Cast Inc is a professional agency combining creative media production wi
 
 ## Services & Pricing
 
-### 1. Live Streaming & Event Production
-Professional multi-camera live streaming and hybrid event support.
-- Multi-camera live streaming
+### 1. Live Streaming, Sports & Event Production
+Professional multi-camera live streaming, sports broadcasts, and hybrid event production for any scale.
+- Multi-camera live streaming & sports coverage
 - Hybrid event support (in-person + remote audiences)
-- Real-time technical directing
+- Real-time technical directing & live switching
+- Live graphics, scoreboards & overlays
 - Professional encoding & delivery
-- Post-event VOD (video on demand) processing
-- Platform integration: YouTube, Zoom, custom RTMP
-- **Starting price:** Contact for a quote (varies by event scale)
-- **Turnaround:** Live delivery on the day; VOD processing within 1–2 days after
+- Post-event VOD & highlight packages
+- Platform integration: YouTube, Zoom, Facebook, custom RTMP
+- **Starting price:** Contact for a quote for events; sports broadcast starting from $999/day
+- **Turnaround:** Live delivery on the day; VOD/highlights within 1–2 days after
 
 ### 2. Professional Photography
 High-resolution photography with professional equipment and workflows.
@@ -67,18 +68,6 @@ Custom web development and IT infrastructure for businesses of all sizes.
 - **Starting price: $99 for small projects** (base price, minimum features)
 - **Turnaround:** Depends on project scope — discussed at project kickoff
 - **Location:** Available worldwide (remote)
-
-### 5. Sports Broadcast
-Professional live sports broadcast production for games, tournaments, and sporting events.
-- Multi-camera sports coverage
-- Live switching & technical directing
-- Real-time graphics & scoreboards
-- Platform streaming (YouTube, Facebook, custom RTMP)
-- Post-event highlight packages
-- Remote commentary integration
-- **Starting price: $999/day** (base price, minimum features)
-- **Turnaround:** Live on the day; highlight edits within 1–2 days
-- **Location:** Primarily GTA but available in other cities — contact to discuss
 
 ## Pricing Policy
 All prices listed are base/starting prices with minimum features. For full package details, custom quotes, and to find the right solution for your needs, visitors should contact Click & Cast directly. Always encourage visitors to reach out for a personalized quote.

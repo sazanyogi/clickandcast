@@ -77,9 +77,9 @@ const projects = [
     tag: "Web Development",
     year: "2025",
     description: "Full website design and development for Maple Everest — built with Next.js and a modern design system.",
-    cover: null,
+    cover: "/portfolio/websites/maple-everest.jpg",
     url: "https://mapleverest.com",
-    images: [],
+    images: ["/portfolio/websites/maple-everest.jpg"],
   },
   {
     id: "goal-nepal",
@@ -88,9 +88,9 @@ const projects = [
     tag: "Web Development",
     year: "2025",
     description: "Sports news and results platform for the Nepali football community, built and deployed on Vercel.",
-    cover: null,
+    cover: "/portfolio/websites/goal-nepal.jpg",
     url: "https://goalnepal.vercel.app",
-    images: [],
+    images: ["/portfolio/websites/goal-nepal.jpg"],
   },
   {
     id: "sazan-yogi",
@@ -99,9 +99,9 @@ const projects = [
     tag: "Personal Portfolio",
     year: "2025",
     description: "Personal portfolio and creative showcase for Sazan Yogi — Production Lead at Click & Cast Inc.",
-    cover: null,
+    cover: "/portfolio/websites/sazan-yogi.jpg",
     url: "https://sazan.com.np",
-    images: [],
+    images: ["/portfolio/websites/sazan-yogi.jpg"],
   },
 ];
 
@@ -328,7 +328,7 @@ export default function PortfolioPage() {
               </div>
 
               {/* Photo grid */}
-              {project.images.length > 0 && (
+              {project.images.length > 0 && project.category !== "IT & Web" && (
                 <>
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
                     {(expanded === project.id ? project.images : project.images.slice(0, 8)).map((img, i) => (
@@ -374,37 +374,50 @@ export default function PortfolioPage() {
                 </>
               )}
 
-              {/* IT project — no photos, show card */}
-              {project.images.length === 0 && (
-                <div
-                  className="flex items-center justify-between border rounded-[8px] p-8"
-                  style={{ borderColor: "rgba(65,65,65,0.8)", backgroundColor: "rgba(255,255,255,0.02)" }}
+              {/* IT project — screenshot with overlay */}
+              {project.images.length > 0 && project.category === "IT & Web" && project.cover && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block w-full overflow-hidden rounded-[8px]"
+                  style={{ border: "1px solid rgba(65,65,65,0.8)" }}
                 >
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[1.4px] mb-2" style={{ color: "#a0a0a0" }}>Web Development Project</p>
-                    <p className="font-black text-white text-xl">{project.title}</p>
-                    <p className="text-sm mt-1" style={{ color: "#a0a0a0" }}>Visit the live site to see the work.</p>
-                  </div>
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 font-bold px-6 py-3 rounded-[4px] text-sm uppercase tracking-[1.4px] transition-all duration-200"
-                      style={{ backgroundColor: "#E8174D", color: "#000" }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
-                        (e.currentTarget as HTMLElement).style.color = "#E8174D";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.backgroundColor = "#E8174D";
-                        (e.currentTarget as HTMLElement).style.color = "#000";
-                      }}
+                  {/* Browser chrome bar */}
+                  <div
+                    className="flex items-center gap-1.5 px-4 py-2.5"
+                    style={{ backgroundColor: "#111", borderBottom: "1px solid rgba(65,65,65,0.8)" }}
+                  >
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#ff5f57" }} />
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#febc2e" }} />
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#28c840" }} />
+                    <div
+                      className="ml-3 flex-1 max-w-xs text-xs px-3 py-1 rounded-full text-center truncate"
+                      style={{ backgroundColor: "#1a1a1a", color: "#606060" }}
                     >
-                      Visit Site →
-                    </a>
-                  )}
-                </div>
+                      {project.url?.replace("https://", "")}
+                    </div>
+                  </div>
+                  {/* Screenshot */}
+                  <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                    <Image
+                      src={project.cover}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                      sizes="(max-width: 768px) 100vw, 80vw"
+                    />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+                      <span
+                        className="font-bold px-6 py-3 rounded-[4px] text-sm uppercase tracking-[1.4px]"
+                        style={{ backgroundColor: "#E8174D", color: "#000" }}
+                      >
+                        Visit Site →
+                      </span>
+                    </div>
+                  </div>
+                </a>
               )}
 
               {/* Divider */}

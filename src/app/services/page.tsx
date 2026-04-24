@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Radio, Camera, Mic, Cpu, Trophy, ArrowRight } from "lucide-react";
+import { Radio, Camera, Mic, Cpu, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import WordReveal from "@/components/ui/WordReveal";
 
@@ -10,19 +10,21 @@ const services = [
     id: "media",
     icon: Radio,
     tag: "Media",
-    title: "Live Streaming & Event Production",
-    subtitle: "High-reliability broadcasts for the digital age.",
+    title: "Live Streaming, Sports & Event Production",
+    subtitle: "High-reliability broadcasts for every occasion.",
     description:
-      "We use professional-grade technical workflows to ensure your stream never drops, no matter the scale. From intimate corporate briefings to large-scale hybrid conferences, we handle every layer of the broadcast.",
+      "From intimate corporate briefings to large-scale sports tournaments and hybrid conferences — we handle every layer of the broadcast with professional-grade workflows that ensure your stream never drops.",
     features: [
-      "Multi-camera live streaming",
-      "Hybrid event support",
-      "Real-time technical directing",
+      "Multi-camera live streaming & sports coverage",
+      "Hybrid event support (in-person + remote)",
+      "Real-time technical directing & live switching",
+      "Live graphics, scoreboards & overlays",
       "Professional encoding & delivery",
-      "Post-event VOD processing",
+      "Post-event VOD & highlight packages",
       "Platform integration (YouTube, Zoom, custom RTMP)",
+      "Sports broadcast starting from $999/day",
     ],
-    cta: "Book a Stream",
+    cta: "Book a Broadcast",
   },
   {
     id: "photography",
@@ -31,7 +33,7 @@ const services = [
     title: "Professional Photography",
     subtitle: "Capturing moments with an editorial eye.",
     description:
-      "High-resolution delivery optimized for both print and high-speed web display. Shot on Sony FX series equipment and processed with Apple M3 Pro workflows for the fastest turnaround without sacrificing quality.",
+      "High-resolution delivery optimized for both print and high-speed web display. Professional equipment and workflows for the fastest turnaround without sacrificing quality.",
     features: [
       "Corporate headshots & team portraits",
       "Commercial product photography",
@@ -59,24 +61,6 @@ const services = [
       "Remote guest integration",
     ],
     cta: "Book Studio Time",
-  },
-  {
-    id: "sports",
-    icon: Trophy,
-    tag: "Media",
-    title: "Sports Broadcast",
-    subtitle: "Bringing the game to life.",
-    description:
-      "Professional live sports broadcast production for games, tournaments, and sporting events of any scale. From local leagues to large-scale competitions, we deliver high-energy, broadcast-quality coverage.",
-    features: [
-      "Multi-camera sports coverage",
-      "Live switching & technical directing",
-      "Real-time graphics & scoreboards",
-      "Platform streaming (YouTube, Facebook, custom RTMP)",
-      "Post-event highlight packages",
-      "Remote commentary integration",
-    ],
-    cta: "Book a Broadcast",
   },
   {
     id: "it",
@@ -133,7 +117,7 @@ export default function ServicesPage() {
             className="text-base sm:text-lg max-w-xl leading-relaxed"
             style={{ color: "#a0a0a0" }}
           >
-            Five pillars of excellence — from pixel-perfect photography to bulletproof IT
+            Four pillars of excellence — from pixel-perfect photography to bulletproof IT
             infrastructure. Organized execution with zero compromise on creativity.
           </motion.p>
         </div>

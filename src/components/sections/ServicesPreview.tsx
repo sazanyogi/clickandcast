@@ -2,17 +2,17 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Radio, Camera, Mic, Cpu, Trophy } from "lucide-react";
+import { Radio, Camera, Mic, Cpu } from "lucide-react";
 import TiltCard from "@/components/ui/TiltCard";
 import WordReveal from "@/components/ui/WordReveal";
 
 const services = [
   {
     icon: Radio,
-    title: "Live Streaming & Event Production",
-    subtitle: "High-reliability broadcasts for the digital age.",
+    title: "Live Streaming, Sports & Events",
+    subtitle: "High-reliability broadcasts for every occasion.",
     description:
-      "Multi-cam live streaming, hybrid event support, and real-time technical directing. We ensure your stream never drops, no matter the scale.",
+      "Multi-cam live streaming, sports broadcasts, and hybrid event production. Professional workflows from corporate briefings to large-scale tournaments.",
     tag: "Media",
   },
   {
@@ -29,14 +29,6 @@ const services = [
     subtitle: "Your voice, amplified.",
     description:
       "Full-service podcast recording, audio engineering, and Vodcast setups. Professional studio environment with high-end acoustics and lighting.",
-    tag: "Media",
-  },
-  {
-    icon: Trophy,
-    title: "Sports Broadcast",
-    subtitle: "Bringing the game to life.",
-    description:
-      "Professional live sports broadcast production for games, tournaments, and events. Multi-camera coverage, live graphics, and real-time streaming delivery.",
     tag: "Media",
   },
   {
@@ -65,7 +57,7 @@ export default function ServicesPreview() {
               Our Services
             </p>
             <h2 className="font-black leading-none text-white" style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}>
-              <WordReveal text="Five Pillars of Excellence" />
+              <WordReveal text="Four Pillars of Excellence" />
             </h2>
           </div>
           <Link href="/services" className="shrink-0 text-sm font-semibold transition-colors hover:text-[#E8174D]" style={{ color: "#a0a0a0" }}>
@@ -73,7 +65,7 @@ export default function ServicesPreview() {
           </Link>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map(({ icon: Icon, title, subtitle, description, tag }, i) => (
             <motion.div
               key={title}
