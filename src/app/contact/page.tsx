@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Send, CheckCircle2, ArrowRight } from "lucide-react";
+import { MessageCircle, CheckCircle2, ArrowRight } from "lucide-react";
 import WordReveal from "@/components/ui/WordReveal";
 
 const services = [
@@ -20,21 +20,18 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", service: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error();
-      setStatus("success");
-      setForm({ name: "", email: "", service: "", message: "" });
-    } catch {
-      setStatus("error");
-    }
+    const text = encodeURIComponent(
+      `Hi, I found you via your website!\n\n` +
+      `*Name:* ${form.name}\n` +
+      `*Email:* ${form.email}\n` +
+      `*Service:* ${form.service || "Not specified"}\n\n` +
+      `*Message:*\n${form.message}`
+    );
+    window.open(`https://wa.me/14379874806?text=${text}`, "_blank");
+    setStatus("success");
+    setForm({ name: "", email: "", service: "", message: "" });
   }
 
   return (
@@ -100,7 +97,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-black text-white">Message Sent!</h3>
                 <p className="text-sm" style={{ color: "#a0a0a0" }}>
-                  We&apos;ll get back to you within 24 hours.
+                  WhatsApp opened with your message pre-filled. Just hit send!
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
@@ -187,12 +184,6 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {status === "error" && (
-                  <p className="text-sm" style={{ color: "#E8174D" }}>
-                    Something went wrong. Try WhatsApp instead or email us directly.
-                  </p>
-                )}
-
                 <button
                   type="submit"
                   disabled={status === "loading"}
@@ -207,7 +198,7 @@ export default function ContactPage() {
                     (e.currentTarget as HTMLElement).style.color = "#000000";
                   }}
                 >
-                  {status === "loading" ? "Sending..." : <><Send size={14} /> Send Message</>}
+                  <MessageCircle size={14} /> Send via WhatsApp
                 </button>
               </form>
             )}
