@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, CheckCircle2, ArrowRight } from "lucide-react";
+import { MessageCircle, Mail, CheckCircle2, ArrowRight } from "lucide-react";
 import WordReveal from "@/components/ui/WordReveal";
 
 const services = [
@@ -20,8 +20,7 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", service: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  function sendWhatsApp() {
     const text = encodeURIComponent(
       `Hi, I found you via your website!\n\n` +
       `*Name:* ${form.name}\n` +
@@ -32,6 +31,21 @@ export default function ContactPage() {
     window.open(`https://wa.me/14379874806?text=${text}`, "_blank");
     setStatus("success");
     setForm({ name: "", email: "", service: "", message: "" });
+  }
+
+  function sendEmail() {
+    const subject = encodeURIComponent(`New Inquiry — ${form.service || "General"}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nService: ${form.service || "Not specified"}\n\nMessage:\n${form.message}`
+    );
+    window.open(`mailto:clickandcast25@gmail.com?subject=${subject}&body=${body}`, "_blank");
+    setStatus("success");
+    setForm({ name: "", email: "", service: "", message: "" });
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    sendWhatsApp();
   }
 
   return (
@@ -184,22 +198,39 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-[4px] text-sm uppercase tracking-[1.4px] transition-all duration-200 disabled:opacity-50"
-                  style={{ backgroundColor: "#E8174D", color: "#000000" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
-                    (e.currentTarget as HTMLElement).style.color = "#E8174D";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.backgroundColor = "#E8174D";
-                    (e.currentTarget as HTMLElement).style.color = "#000000";
-                  }}
-                >
-                  <MessageCircle size={14} /> Send via WhatsApp
-                </button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    type="submit"
+                    className="flex-1 inline-flex items-center justify-center gap-2 font-bold px-6 py-3 rounded-[4px] text-sm uppercase tracking-[1.4px] transition-all duration-200"
+                    style={{ backgroundColor: "#E8174D", color: "#000000" }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.backgroundColor = "#1d1d1d";
+                      (e.currentTarget as HTMLElement).style.color = "#E8174D";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.backgroundColor = "#E8174D";
+                      (e.currentTarget as HTMLElement).style.color = "#000000";
+                    }}
+                  >
+                    <MessageCircle size={14} /> Send via WhatsApp
+                  </button>
+                  <button
+                    type="button"
+                    onClick={sendEmail}
+                    className="flex-1 inline-flex items-center justify-center gap-2 font-bold px-6 py-3 rounded-[4px] text-sm uppercase tracking-[1.4px] transition-all duration-200"
+                    style={{ border: "1px solid rgba(65,65,65,0.8)", color: "#a0a0a0" }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(232,23,77,0.4)";
+                      (e.currentTarget as HTMLElement).style.color = "#E8174D";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(65,65,65,0.8)";
+                      (e.currentTarget as HTMLElement).style.color = "#a0a0a0";
+                    }}
+                  >
+                    <Mail size={14} /> Send via Email
+                  </button>
+                </div>
               </form>
             )}
           </motion.div>
