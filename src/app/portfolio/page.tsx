@@ -380,8 +380,8 @@ export default function PortfolioPage() {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative block w-full overflow-hidden rounded-[8px]"
-                  style={{ border: "1px solid rgba(65,65,65,0.8)" }}
+                  className="group relative block overflow-hidden rounded-[8px] mx-auto"
+                  style={{ border: "1px solid rgba(65,65,65,0.8)", maxWidth: "860px" }}
                 >
                   {/* Browser chrome bar */}
                   <div
