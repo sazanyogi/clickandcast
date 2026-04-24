@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Radio, Camera, Mic, Cpu, ArrowRight } from "lucide-react";
+import { Radio, Camera, Mic, Cpu, Trophy, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import WordReveal from "@/components/ui/WordReveal";
 
@@ -61,6 +61,24 @@ const services = [
     cta: "Book Studio Time",
   },
   {
+    id: "sports",
+    icon: Trophy,
+    tag: "Media",
+    title: "Sports Broadcast",
+    subtitle: "Bringing the game to life.",
+    description:
+      "Professional live sports broadcast production for games, tournaments, and sporting events of any scale. From local leagues to large-scale competitions, we deliver high-energy, broadcast-quality coverage.",
+    features: [
+      "Multi-camera sports coverage",
+      "Live switching & technical directing",
+      "Real-time graphics & scoreboards",
+      "Platform streaming (YouTube, Facebook, custom RTMP)",
+      "Post-event highlight packages",
+      "Remote commentary integration",
+    ],
+    cta: "Book a Broadcast",
+  },
+  {
     id: "it",
     icon: Cpu,
     tag: "IT",
@@ -115,7 +133,7 @@ export default function ServicesPage() {
             className="text-base sm:text-lg max-w-xl leading-relaxed"
             style={{ color: "#a0a0a0" }}
           >
-            Four pillars of excellence — from pixel-perfect photography to bulletproof IT
+            Five pillars of excellence — from pixel-perfect photography to bulletproof IT
             infrastructure. Organized execution with zero compromise on creativity.
           </motion.p>
         </div>

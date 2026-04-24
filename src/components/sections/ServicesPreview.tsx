@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Radio, Camera, Mic, Cpu } from "lucide-react";
+import { Radio, Camera, Mic, Cpu, Trophy } from "lucide-react";
 import TiltCard from "@/components/ui/TiltCard";
 import WordReveal from "@/components/ui/WordReveal";
 
@@ -32,6 +32,14 @@ const services = [
     tag: "Media",
   },
   {
+    icon: Trophy,
+    title: "Sports Broadcast",
+    subtitle: "Bringing the game to life.",
+    description:
+      "Professional live sports broadcast production for games, tournaments, and events. Multi-camera coverage, live graphics, and real-time streaming delivery.",
+    tag: "Media",
+  },
+  {
     icon: Cpu,
     title: "IT Projects & Development",
     subtitle: "Building the backbone of your business.",
@@ -57,7 +65,7 @@ export default function ServicesPreview() {
               Our Services
             </p>
             <h2 className="font-black leading-none text-white" style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)", fontWeight: 900 }}>
-              <WordReveal text="Four Pillars of Excellence" />
+              <WordReveal text="Five Pillars of Excellence" />
             </h2>
           </div>
           <Link href="/services" className="shrink-0 text-sm font-semibold transition-colors hover:text-[#E8174D]" style={{ color: "#a0a0a0" }}>
@@ -65,7 +73,7 @@ export default function ServicesPreview() {
           </Link>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map(({ icon: Icon, title, subtitle, description, tag }, i) => (
             <motion.div
               key={title}
