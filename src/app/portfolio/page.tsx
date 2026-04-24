@@ -81,6 +81,28 @@ const projects = [
     url: "https://mapleverest.com",
     images: [],
   },
+  {
+    id: "goal-nepal",
+    title: "Goal Nepal",
+    category: "IT & Web" as Category,
+    tag: "Web Development",
+    year: "2025",
+    description: "Sports news and results platform for the Nepali football community, built and deployed on Vercel.",
+    cover: null,
+    url: "https://goalnepal.vercel.app",
+    images: [],
+  },
+  {
+    id: "sazan-yogi",
+    title: "Sazan Yogi",
+    category: "IT & Web" as Category,
+    tag: "Personal Portfolio",
+    year: "2025",
+    description: "Personal portfolio and creative showcase for Sazan Yogi — Production Lead at Click & Cast Inc.",
+    cover: null,
+    url: "https://sazan.com.np",
+    images: [],
+  },
 ];
 
 const categories: Category[] = ["All", "Live Streaming", "Photography", "IT & Web"];
