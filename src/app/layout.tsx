@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
+      <body className="min-h-screen flex flex-col bg-black text-white antialiased">
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-QFLTXPCLDP"
           strategy="afterInteractive"
@@ -49,8 +49,6 @@ export default function RootLayout({
             gtag('config', 'G-QFLTXPCLDP');
           `}
         </Script>
-      </head>
-      <body className="min-h-screen flex flex-col bg-black text-white antialiased">
         <SmoothScroll />
         <SpotlightCursor />
         <Navbar />
