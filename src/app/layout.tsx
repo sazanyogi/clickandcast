@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -35,6 +36,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QFLTXPCLDP"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QFLTXPCLDP');
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen flex flex-col bg-black text-white antialiased">
         <SmoothScroll />
         <SpotlightCursor />
